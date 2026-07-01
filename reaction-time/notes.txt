@@ -1,0 +1,10 @@
+PROJET REACTIME
+
+Objectif: faire un test de reaction avec un boutton et une led. 
+
+Principe: La une led s'allume, et apres quelque seconde elle s'eteint, l'objectif et d'appuyer le plus vite possible sur le button lorsque la led s'eteint. pour mesurer le temps de reaction. 
+
+A prendre en compte: Appuyer avant que la led s'eteigne
+
+Techno utiliser : UART pour l'affichage du temps de reaction. Timer TIM pour calculer le temps de reaction, une peu de GPIO pour le setup du button et de la led. 
+
