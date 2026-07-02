@@ -14,7 +14,7 @@ CFLAGS    = $(CPU) $(DEFS) $(INCS) -Wall -O2 -ffreestanding \
 LDSCRIPT  = STM32F401RETX_FLASH.ld
 LDFLAGS   = $(CPU) -T$(LDSCRIPT) --specs=nosys.specs --specs=nano.specs \
             -Wl,--gc-sections -Wl,-Map=$(PROJECT).map
-SRCS_C    = main.c system_stm32f4xx.c
+SRCS_C    = main.c system_stm32f4xx.c uart.c
 SRCS_S    = startup_stm32f401xe.s
 OBJS      = $(SRCS_C:.c=.o) $(SRCS_S:.s=.o)
 
