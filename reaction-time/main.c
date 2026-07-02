@@ -25,6 +25,7 @@ void tim2_init(void) {
     RCC->APB1ENR |= (1U << 0);
     TIM2->PSC = 16 - 1;
     TIM2->ARR = 0xFFFFFFFF;
+    TIM2->EGR |= 1;   // force update event pour charger PSC dans le shadow register
     TIM2->CNT = 0;
 }
 
@@ -78,7 +79,6 @@ uint32_t random_delay_ms(void) {
 
         printf("Attention...\r\n");
 
-        // Clignote la LED pendant le délai aléatoire
         uint32_t wait = random_delay_ms();
         uint32_t start = millis;
         while ((millis - start) < wait) {
@@ -88,7 +88,6 @@ uint32_t random_delay_ms(void) {
             delay_ms(200);
         }
 
-        // GO !
         GPIOA->BSRR = (1U << LED_PIN);   // LED ON
         TIM2->CNT = 0;                    // reset compteur
         TIM2->CR1 |= (1U << 0);           // START TIM2
@@ -103,7 +102,6 @@ uint32_t random_delay_ms(void) {
         printf("Temps de reaction : %lu ms %lu us\r\n",
                reaction_us / 1000, reaction_us % 1000);
 
-        // Attendre relâchement + antirebond avant de repartir
         while (button_pressed()) {}
         delay_ms(200);
     }
