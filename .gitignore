@@ -1,0 +1,19 @@
+# Build artifacts
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+*.d
+build/
+
+# IDE
+.vscode/
+.idea/
+.project
+.cproject
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
