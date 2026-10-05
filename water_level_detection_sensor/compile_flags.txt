@@ -1,0 +1,9 @@
+-I./cmsis
+-I../../emlib
+-DSTM32F401xx
+-DSTM32F401RETx
+--target=arm-none-eabi
+-mcpu=cortex-m4
+-mthumb
+-xc
+-std=gnu11
