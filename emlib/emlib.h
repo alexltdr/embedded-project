@@ -1,25 +1,19 @@
 #ifndef EMLIB_H
 #define EMLIB_H
 
+#include "adc.h"
 #include "stm32f4xx.h"
 #include <stdint.h>
 #include <stdio.h>
 #include "uart.h"
 #include "exti.h"
+#include "gpio.h"
+#include "rcc.h"
 
 /* --- Défines --- */
 #define AF1_TIM2   0x1U
 #define AF_MASK    0xFU
 
-/* --- RCC --- */
-void rcc_gpioa_enable(void);
-void rcc_tim2_enable(void);
-
-/* --- GPIOA : configuration des broches --- */
-void gpioa_output(uint8_t pin);
-void gpioa_input(uint8_t pin);
-void gpioa_pull_up(uint8_t pin);
-void gpioa_alternate_function(uint8_t pin);
 
 /* --- GPIOA : contrôle des LEDs --- */
 void led_on(uint8_t pin);
@@ -45,4 +39,4 @@ void start_timer(void);
 /* ---- SYSCFG ---- */
 
 void rcc_syscfg_enable(void);
-#endif /* EMLIB_H */
+#endif 

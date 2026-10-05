@@ -3,27 +3,6 @@
 #define AF1_TIM2   0x1U
 #define AF_MASK 0xFU
 
-void rcc_gpioa_enable(void) {
-    RCC->AHB1ENR |= (1 << 0);
-}
-
-void gpio_enable_clock(GPIO_TypeDef *port) {
-	uint32_t idx = ((uint32_t)port - AHB1PERIPH_BASE) / 0x400U;
-	RCC->AHB1ENR |= (1U << idx);
-}
-void gpio_set_input(GPIO_TypeDef *port, uint8_t pin) {
-	port->MODER &= ~(3 << (pin * 2));
-}
-
-
-void rcc_syscfg_enable(void)
-{
-	RCC->APB2ENR |= (1 << 14);
-}
-void rcc_tim2_enable(void)
-{
-	RCC->APB1ENR |= (1 << 0);
-}
 
 void gpioa_output(uint8_t pin) {
     GPIOA->MODER &= ~(3 << (pin * 2));
